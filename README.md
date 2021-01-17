@@ -1,10 +1,11 @@
 
- ![N|Solid](https://github.com/aluiziomonteiro/sys-vendas/blob/dev/fotos-sisvendas/logo.png?raw=true)
+ ![logo](https://github.com/aluiziomonteiro/sys-vendas/blob/master/fotos-sisvendas/logo.png?raw=true)
 
 
-> Sistema de controle de vendas, estoque e pagamentos
+##### Sistema de controle de vendas, estoque e pagamentos
+___
 
-<br /><br />
+___
 
 ## 🚀 Começando
 #### Se você trabalha com vendas certamente sabe da importância de manter os estoques sempre bem organizados.
@@ -13,9 +14,10 @@
 #### Se você busca por uma forma de gerenciar o seu negócio, um software que realize essas funções é realmente importante, até indispensável.
 
 
-![N|Solid](https://github.com/aluiziomonteiro/sys-vendas/blob/dev/fotos-sisvendas/tela-dashboard01.png?raw=true)
+![N|Solid](https://github.com/aluiziomonteiro/sys-vendas/blob/master/fotos-sisvendas/tela-dashboard01.png?raw=true)
 
-<br /><br />
+___
+
 ## 🛠️ Funcionalidades
 
 -	Cadastros Gerais
@@ -35,7 +37,10 @@
 -	Venda em até 12x
 -	Controle de quantidade de produtos em estoque
 
-<br /><br />
+
+
+___
+
 ## 📦 Tecnologias de produção
 
 - JDK 8x;
@@ -49,7 +54,8 @@
 
 > Testado no Firefox, Chrome e Edge
 
-<br /><br />
+___
+
 
 ## 🔧 Instalação para desenvolvimento
 
@@ -64,9 +70,10 @@
 8. Acesse o URL no navegador: localhost:8080/sys-vendas/;
 9. Faça login com usuário e senha admin, admin.
 <br /><br />
-![N|Solid](https://github.com/aluiziomonteiro/sys-vendas/blob/dev/fotos-sisvendas/tela-login.png?raw=true) 
+![N|Solid](https://github.com/aluiziomonteiro/sys-vendas/blob/master/fotos-sisvendas/tela-login.png?raw=true) 
 
-<br /><br />
+___
+
 ## ⚙️ Execução
 ### Input de informações no sistema
 
@@ -78,7 +85,7 @@
 4. Associe a Categoria e o Fornecedor ao Produto;
 5. Realize o cadastro de uma Cliente pelo menu: "Cadastrar/Cliente".
 <br /><br />
-![N|Solid](https://github.com/aluiziomonteiro/sys-vendas/blob/dev/fotos-sisvendas/tela-menu-cadastro01.png?raw=true) 
+![N|Solid](https://github.com/aluiziomonteiro/sys-vendas/blob/master/fotos-sisvendas/tela-menu-cadastro01.png?raw=true) 
 
 
 ### Realização de uma venda
@@ -89,7 +96,9 @@
 5. Selecione a forma de pagamento;
 6. Confirme a venda.
 <br /><br />
-![N|Solid](https://github.com/aluiziomonteiro/sys-vendas/blob/dev/fotos-sisvendas/tela-orcamento04.png?raw=true) 
+![N|Solid](https://github.com/aluiziomonteiro/sys-vendas/blob/master/fotos-sisvendas/tela-orcamento04.png?raw=true) 
+
+
 
 <br /><br />
 
