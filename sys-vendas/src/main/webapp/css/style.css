@@ -1,0 +1,553 @@
+@charset "ISO-8859-1";
+
+.caixa {
+	border: 2px solid #ffffff;
+	width: 90%;
+}
+
+div.caixaIndex {
+	border: 2px solid #ffffff;
+    width: 86%;
+    display: -webkit-box;
+}
+
+fieldset.caixa {
+	border: 0px solid #ffffff;
+	width: 90%;
+}
+.radio {
+    border: 1px solid #f1f2fc;
+    border-radius: 15px;
+    margin-left: 15px;
+    padding: 5px;
+    width: 48%;
+    margin-bottom: 15px;
+}
+
+.direita {
+	float: left;
+	width: 48%;
+}
+
+.esquerda {
+	width: 48%;
+	float: left;
+}
+
+.centro {
+	align-content: center;
+}
+
+.principal {
+	padding: 10px;
+}
+
+fieldset legend {
+	font-weight: bolder;
+	border-bottom: 1px solid #c0c0c0;
+	padding-top: 60px;
+}
+
+/* Orçamento*/
+fieldset.campoOrcamento{
+    border: 1px solid #e4f0f6;
+    border-right: 2px solid #b6cedb;
+    border-bottom: 2px solid #12a4f1;
+    border-radius: 15px;
+    padding: 32px;
+}
+
+.titOrcamento{
+	margin-bottom: -24px;
+    margin-top: 30px;
+    font-style: italic;
+    text-align: center;
+	color: black;
+    font-size: 19px;
+    margin-left: 16px;
+    border-right: 1px solid #b6cedb;
+    border-radius: 20px;
+    padding: 6px;
+    width: 131px;
+    background-color: rgb(228, 240, 246);
+}
+
+.container{
+    width:400px;
+    height:100px;
+    background:gray;
+}
+
+.container > div {
+    width: 32%;
+    height: 50%;
+    position: relative;
+    float: left;
+    border-left: 1px solid blue;
+}
+
+imagem.input[type="file"] {
+  display: none;
+}
+
+/* css do percentual*/
+label, input {
+	position: relative;	
+}
+
+label::after {
+	content: '' attr(unit);
+	position: absolute;
+	top: -8px;
+    left: 68px;
+	font-family: arial, helvetica, sans-serif;
+	font-size: 20px;
+	color: maroon;
+	font-weight: bold;
+}
+
+/* Divs de valor e percentual */
+.dirValor {
+	float: left;
+	width: 33%;
+}
+
+/* Botão de adicionar ao carrinho na página Info */
+div.btnCarrinho {
+	float: left;
+	width: 33%;
+	background-color: red;
+}
+
+.esqValor {
+	width: 33%;
+	float: left;
+}
+
+.esqValorOrc {
+	width: 18%;
+	float: left;
+}
+
+.esqSelectOrc {
+	width: 18%;
+
+}
+
+/*Div carrinho*/
+.centroValor {
+	width: 33%;
+	float: left;
+	margin-top: 41px;
+}
+
+
+/*Div carrinho*/
+.divParcelas {
+	width: 33%;
+	float: left;
+	margin-top: 41px;
+}
+
+/*Div carrinho*/
+.esquerdaValor {
+	width: 140px;
+    margin-right: 1px;
+    float: left;
+}
+
+.centValor {
+	align-content: center;
+}
+
+/*input de valor do produto*/
+#sugestaoVenda{
+	height:35px; 
+	width: 140px;
+	font-size: 20px;
+	color: red;
+}
+
+/*valores vermelhos*/
+.valores{
+	font-size: 17px;
+    font-weight: bold;
+	color: red; 
+	 
+}
+
+/*nome negrito*/
+.nome{  
+	font-weight: bold;
+	/* font-size: 18px; */
+}
+
+/*nome negrito menor*/
+.nome2{  
+	font-weight: bold;
+	font-size: 16px;
+}
+
+/*botão de busca para a list*/
+#btnBusca {
+	font-size:25px;
+}
+
+/*campo de busca para a list*/
+.campoBusca {
+	width: 38%;
+	float: left;
+	padding-bottom: 5px;
+}
+
+#divBusca{
+	margin-top: 50px;
+}
+
+/*div contendo botões de ações da list*/
+.btnAcoes{
+	width: max-content;
+}
+
+/*preview de imagens de produto*/
+img.preview {
+	height: 150px; 
+    margin-bottom: 47px;
+    margin-top: 24px;
+}
+
+img#imgPreview{
+	width: 150px; 
+	height: 150px;
+	margin-bottom: 47px;
+    margin-top: 24px;
+}
+
+/*miniatura da imagem do produto para a list*/
+img.miniaturaProduto{
+	/*width: 100px;*/
+	width: 39px;
+}
+
+/*miniatura da imagem do produto para info-orçamento*/
+img.miniaturaProdutoPeq{
+	width: 65px;
+}
+
+
+/*miniatura da imagem do produto para a info*/
+img.miniaturaProdutoInf{
+	width: 150px;
+}
+
+/*caixa de seleção para produto*/
+select#selectDeProdutos {
+	width: 170px; 
+	height: 38px;
+	margin-left: 15px;
+	margin-bottom: 10px;
+}
+
+/*labels gerais*/
+label{
+	margin-top: 15px;
+	/* font-size: 18px; */
+	font-weight: 500;
+    color: #000080a6;
+}
+
+/*labels vermelhos para produto*/
+label#labelsProdutosValor{
+	margin-top: 15px;
+	margin-bottom:0px;
+	color: maroon;
+}
+
+/*label aviso*/
+label#labelAlerta{
+	margin-top: 0px;
+    font-style: oblique;
+    color: #fc0404;
+    margin-left: 0%;
+}
+
+
+
+/*inputs vermelhos para valores*/
+input#fieldsValor{
+	width: 180px; 
+	border-color: maroon;
+	color: maroon;
+	margin-left: 15px;
+}
+
+/*inputs vermelhos pequenos*/
+input#fieldsValorSmall {
+	width: 120px; 
+	border-color: maroon;
+	color: maroon;
+	margin-left: 15px;
+	
+}
+
+/*inputs vermelhos pequenos*/
+input#fieldQtdInfo {
+	width: 120px; 
+	border-color: maroon;
+	color: maroon;
+	margin-left: 15px;
+}
+
+/*inputs específicos do cadastro de produtos*/
+input#custoUnid {
+	width: 120px; 
+	border-color: maroon;
+	color: maroon;
+	margin-left: 15px;
+}
+
+input#percentual {
+	width: 120px; 
+	border-color: maroon;
+	color: maroon;
+	margin-left: 15px;
+	margin-top: -15px;	
+}
+
+input#lucro {
+	width: 120px; 
+	border-color: maroon;
+	color: maroon;
+	margin-left: 15px;
+	margin-top: 0px;	
+}
+
+input#sugestaoVenda {
+	width: 120px; 
+	border-color: maroon;
+	color: maroon;
+	margin-left: 15px;
+	margin-top: 0px;	
+}
+
+/*inputs médios normais*/
+input#fieldsMedio{
+	width: 180px; 
+	margin-left: 15px;
+	margin-top: -7px;
+}
+
+/*inputs valor parcela do Orçamento*/
+input#inputValorParcela{
+    width: 100px;
+    margin-left: 30px;
+    margin-top: 12;
+    height: 37;
+    border-color: maroon;
+    color: maroon;
+}
+
+/*input qtd parcela do Orçamento*/
+input#qtdParcelas{
+	width: 180px; 
+	margin-left: 15px;
+}
+
+/*inputs normais*/
+input#fieldComum{
+	margin-left: 15px;
+	margin-top: -7px;
+}
+
+/*inputs pequenos Deve ser 
+apagado e substituido pelo 
+campoData abaixo*/
+
+input#fieldsPequenoData{
+	margin-left: 15px;
+	width: 150px;
+	float: left;
+	margin-top: -7px;
+}
+
+input#campoData{
+	margin-left: 15px;
+	width: 150px;
+	float: left;
+	margin-top: -7px;
+}
+
+/*inputs pequenos*/
+input#fieldsPequeno{
+	margin-left: 15px;
+	width: 60px;
+	margin-top: -7px;
+}
+
+/*Conjuto de inputs para data*/
+div.fieldsData{
+	width: 92%;
+	height: 50px;
+}
+
+/*Links do select*/
+a#linkSelect {
+	margin-left: 15px;
+	font-size: 16px;
+}
+
+/*Div dos botões*/
+div#btnForm {
+	width: 50%;
+    margin-left: 15px;
+    margin-top: 20px;
+    margin-bottom: 50px;
+}
+
+/*Div dos botões pag Orçamento*/
+div#btnFormOrca {
+	width: 50%;
+    margin-left: 0px;
+    margin-top: 70px;
+    margin-bottom: -13px;
+    padding-top: 25px;
+}
+span {
+	font-size: 18px;
+	color: #222a2e;
+    /*font-style: italic;*/	
+}
+
+/*inputs vermelhos para valores*/
+input#redInputInfo{
+	border: none; 
+	font-size: 30px; 
+	color: maroon; 
+	font-style: italic;
+}
+
+/*inputs vermelhos para valores*/
+input#redInputInfo{
+	border: none; 
+	font-size: 40px; 
+	color: maroon; 
+	font-style: italic;
+}
+
+div#divQtdInfo {
+	margin-bottom: 20px;
+}
+
+div.divCarrinho {
+	padding-left: 24px;
+    background-color: #f0f0ff;
+    height: 161px;
+    width: 281px;
+}
+
+a#linkOrcamento {
+	margin-bottom: 25px;
+}
+
+/*onde são geradas as parcelas*/
+div#divParcelas {
+    margin-bottom: 15px;
+    padding-left: 20px;
+    background-color: #f2f2f2;
+}
+
+/*toggle de pagar parcelas*/
+td#tdPagar {
+    padding-left: 30px;
+}
+
+/*Link de efetuar pagamento*/
+.direitaLink {
+    float: right;
+    width: 17%;
+}
+
+/*Estilos do toggle arredondado  */
+.toggle.ios, .toggle-on.ios, .toggle-off.ios {
+	border-radius: 20px;
+}
+
+.toggle.ios .toggle-handle {
+	border-radius: 20px;
+}
+
+
+/*Campos A_PAGAR da info-cliente.jsp*/
+.camposAPagar {
+    border-radius: 10px;
+    border-style: hidden;
+    font-size: 13px;
+    font-weight: bold;
+    width: 120px;
+    text-align: center;
+    background: #ffff0087;
+}
+
+/*Campo QUITADO da info-cliente.jsp*/
+.camposQuitados{
+	border-radius:10px;
+	border-style: hidden;
+	font-size: 13px;
+    font-weight: bold;
+	width: 120px;
+	text-align: center;
+	background: #a0fba0;
+}
+
+/*Campos EM_ATRASO da info-cliente.jsp*/
+.camposEmAtraso{
+	border-radius:10px;
+	border-style: hidden;
+	font-size: 13px;
+    font-weight: bold;
+	width: 120px;
+	text-align: center;
+	background: #ffbaba;
+}
+div#divSalvaPagamentos{
+    margin-bottom: 30px;
+    background-color: #f7f6f6;
+    text-align: center;
+}
+
+/*Contem o botão de logout e o nome do usuário*/
+div.divLogout{
+	float: left; 
+	width: 30%; 
+	text-align: right; 
+	padding-right: 3%;
+}
+
+/*Figura dos botões pretos*/
+i#iconBlack {
+	font-size:20px; 
+	color: black;
+	margin-right: 5px;
+}
+
+/*Figuras dos botões do Menu*/
+i#iconMenu {
+	font-size:20px; 
+	color: #cbc4fa;
+}
+
+/*Logo Marca*/
+#imgLogoMarca {
+	width:250px;
+	
+}
+
+/*CheckBox Pagar*/
+#chkPagar{
+	width: 60px;
+    height: 20px;
+	
+}
+
+
+

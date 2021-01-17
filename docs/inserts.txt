@@ -1,0 +1,49 @@
+# 1 INSERE USUARIO
+insert into usuarios(nome, login, senha) values ("junior", "junior", "junior");
+insert into usuarios(nome, login, senha) values ("aluizio", "aluizio", "aluizio");
+
+# 2 INSERE CLIENTE
+insert into clientes(nome, sobre_nome, nascimento, pessoa, situacao, sexo, observacoes, email, celular) values ("Maria", "Abadia", "2000-01-01", "FISICA", "ATIVO", "M", "Primeiro Cliente", "abc@def.com", 6199887766);
+insert into clientes(nome, sobre_nome, nascimento, pessoa, situacao, sexo, observacoes, email, celular) values ("Anastácia", "Montenegro", "1992-02-02", "FISICA", "ATIVO", "F", "Segundo Cliente", "ant@hotmail.com", 6199887766);
+
+# 3 INSERE ENDERÇO
+insert into enderecos(endereco, bairro, cidade, complemento, numero, uf, cep, fone, observacoes) values ("Av. Agua Verde", "Nobre", "Alcantra", "SCS", 286, "AB", "233234-232", "(61) 9988 7766", "Residencial");
+insert into enderecos(endereco, bairro, cidade, complemento, numero, uf, cep, fone, observacoes) values ("Av. Agua Verde", "Nobre", "Alcantra", "SCS", 286, "AB", "342332-323", "(61) 9898 7676", "Comencial");
+
+# 4 INSERE ENDERÇO_CLIENTE (Depende de Endereços e de Clientes)
+insert into enderecos_clientes(fk_endereco, fk_cliente) values (1, 1);
+insert into enderecos_clientes(fk_endereco, fk_cliente) values (2, 2);
+
+# 5 INSERE CATEGORIA 
+insert into categorias(nome) value("beleza");
+insert into categorias(nome) value("saúde");
+
+# 6 INSERE ESTOQUE
+insert into estoques(qtd_entrada, qtd_saida, qtd_minima) values(1000, 0, 100);
+insert into estoques(qtd_entrada, qtd_saida, qtd_minima) values(500, 0, 100);
+
+# 7 INSERE PRODUTO (Depende de categoria e de estoque)
+insert into produtos(fk_categoria, fk_estoque, nome, descricao, indicacao, volume, custo_unid, sugestao_venda) values (1, 1, "Esmalte", "Esmalte de Unhas", "Unhas", "1000ml", 1000, 1500);
+insert into produtos(fk_categoria, fk_estoque, nome, descricao, indicacao, volume, custo_unid, sugestao_venda) values (2, 2, "Shake", "Dietético", "Emagrecimento", "500ml", 5000, 15000);
+
+# 8 INSERE FORNECEDORES 
+insert into fornecedores(nome, pessoa, cnpj_cpf, cep, endereco, bairro, cidade, complemento, uf, fone, email, observacoes) values ("ABS SA", "JURIDICA", "123456789-10", "12345-678", "RB. 12", "Bronze", "Goiabáz", "SBC", "AB", "(98) 7654 3210", "abssa@gmail.com", "Melhor preço");
+insert into fornecedores(nome, pessoa, cnpj_cpf, cep, endereco, bairro, cidade, complemento, uf, fone, email, observacoes) values ("Tia Chica", "FISICA", "781234569-10", "23451-238", "GD. 403", "Milagres", "Sobradinho", "DF", "DF", "(61) 4765 2130", "ltda@outlook.com", "Rápida entrega");
+
+# 9 INSERE PRODUTOS_FORNECEDORES (Depende de Produtos e de Fornecedores)
+insert into produtos_fornecedores(fk_produto, fk_fornecedor) values (1, 1);
+insert into produtos_fornecedores(fk_produto, fk_fornecedor) values (2, 2);
+
+# 10 INSERE ORÇAMENTOS
+insert into orcamentos (fk_cliente, fk_usuario, subtotal, descontos, total, data_lancamento, confirmado) values ("1", "1", 6000, 200, 5800, "2018-08-14", 1);
+insert into orcamentos (fk_cliente, fk_usuario, subtotal, descontos, total, data_lancamento, confirmado) values ("2", "2", 30000, 0, 30000, "2018-08-14", 1);
+
+# 11 INSERE ORÇAMENTOS_PRODUTOS
+insert into orcamentos_produtos(fk_orcamento, fk_produto, qtd, sub_total) values (1, 1, 4, 6000);
+insert into orcamentos_produtos(fk_orcamento, fk_produto, qtd, sub_total) values (2, 2, 2, 30000);
+
+# 12 INSERE PAGAMENTOS	
+insert into pagamentos (fk_orcamento, valor_total, qtd_parcelas, valor_parcela, dia_vencimento, parcelas_pagas, status) values (1, 5800, 4, 1450, 14, 1, "EM DIAS");
+insert into pagamentos (fk_orcamento, valor_total, qtd_parcelas, valor_parcela, dia_vencimento, parcelas_pagas, status) values (2, 30000, 1, 30000, 1, 1, "QUITADO");
+
+
