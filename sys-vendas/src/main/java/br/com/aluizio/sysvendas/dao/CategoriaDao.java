@@ -13,7 +13,7 @@ import br.com.aluizio.sysvendas.model.Categoria;
 /**
  * CategoriaDao.java
  * 
- * @author Aluizio Monteiro 20 de ago de 2018
+ * @author Aluizio Monteiro
  */
 
 public class CategoriaDao implements IDAO {
@@ -23,7 +23,7 @@ public class CategoriaDao implements IDAO {
 		this.connection = new ConnectionFactory().getConnection();
 	}
 
-	//inserir Categoria
+	// inserir Categoria
 	public void adicionar(Object object) {
 		String sql = "Insert into categorias (nome) value (?)";
 		Categoria categoria = (Categoria) object;
@@ -36,7 +36,7 @@ public class CategoriaDao implements IDAO {
 		}
 	}
 
-	//Alterar Categoria
+	// Alterar Categoria
 	public void alterar(Object object) {
 
 		String sql = "update categorias set nome= ? where id= ? ";
@@ -158,18 +158,6 @@ public class CategoriaDao implements IDAO {
 			throw new RuntimeException(e);
 		}
 		return categoria;
-	}
-
-	@Override
-	public void adicionaAltera(Object object) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void adiciona(Object object) {
-		// TODO Auto-generated method stub
-		
 	}
 
 }

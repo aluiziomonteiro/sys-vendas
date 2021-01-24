@@ -15,7 +15,7 @@ import br.com.aluizio.sysvendas.model.Usuario;
  * 
  */
 
-public class UsuarioDao implements IDAO {
+public class UsuarioDao {
 	Connection connection;
 
 	public UsuarioDao() {
@@ -23,7 +23,6 @@ public class UsuarioDao implements IDAO {
 	}
 
 	// Excluir Usuarios
-	@Override
 	public void remover(Object object) {
 		Usuario usuario = (Usuario) object;
 		String sql = "delete from usuarios where id=?";
@@ -36,7 +35,6 @@ public class UsuarioDao implements IDAO {
 			throw new RuntimeException(e);
 		}
 	}
-
 
 	// Busca por Login e Senha
 	public Usuario buscaUsuario(Usuario usuarioBuscado) {
@@ -80,7 +78,6 @@ public class UsuarioDao implements IDAO {
 		}
 	}
 
-	@Override
 	public void adicionaAltera(Object object) {
 		Usuario usuario = (Usuario) object;
 		String sql = "";
@@ -102,7 +99,6 @@ public class UsuarioDao implements IDAO {
 
 	}
 
-	@Override
 	public Object buscaPorId(Object object) {
 		Usuario usuario = (Usuario) object;
 
@@ -124,13 +120,12 @@ public class UsuarioDao implements IDAO {
 		return usuario;
 	}
 
-	@Override
 	public List<Object> getList() {
 		List<Object> lista = new ArrayList<>();
 		String sql = "Select * from usuarios";
-		try (PreparedStatement stmt = connection.prepareStatement(sql)){
+		try (PreparedStatement stmt = connection.prepareStatement(sql)) {
 			ResultSet rs = stmt.executeQuery();
-			while(rs.next()) {
+			while (rs.next()) {
 				Usuario usuario = new Usuario();
 				usuario.setId(rs.getInt("id"));
 				usuario.setNome(rs.getString("nome"));
@@ -145,7 +140,6 @@ public class UsuarioDao implements IDAO {
 	}
 
 	// Busca por nome
-	@Override
 	public List<Object> buscaPorNome(Object object) {
 		Usuario u = (Usuario) object;
 		List<Object> usuarios = new ArrayList<>();
@@ -198,17 +192,4 @@ public class UsuarioDao implements IDAO {
 			throw new RuntimeException(e);
 		}
 	}
-
-	@Override
-	public void altera(Object object) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void adiciona(Object object) {
-		// TODO Auto-generated method stub
-		
-	}
-
 }

@@ -79,8 +79,8 @@ public class AlteraProduto extends HttpServlet {
 		Categoria categoria = new Categoria();
 		categoria.setId(categoriaId);
 		categoria.setNome(req.getParameter("categoria"));
-		//CategoriaDao categoriaDao = new CategoriaDao();
-		//categoriaDao.altera(categoria);
+		// CategoriaDao categoriaDao = new CategoriaDao();
+		// categoriaDao.altera(categoria);
 
 		// Cria este estoque para levar o id a ser buscado
 		Estoque estoque = new Estoque();
@@ -89,9 +89,9 @@ public class AlteraProduto extends HttpServlet {
 		// Busca o estoque d banco para ser somado
 		Estoque estoqueBuscado = (Estoque) new EstoqueDao().buscaPorId(estoque);
 
-		// Soma valor do input com valor que tem no banco 
+		// Soma valor do input com valor que tem no banco
 		qtdAdicional += estoqueBuscado.getQtdEntrada();
-		
+
 		estoque.setQtdEntrada(qtdAdicional);
 		estoque.setQtdMinima(qtdMinima);
 		EstoqueDao estoqueDao = new EstoqueDao();
@@ -116,13 +116,13 @@ public class AlteraProduto extends HttpServlet {
 		produto.setEstoque(estoque);
 
 		ProdutoDao produtoDao = new ProdutoDao();
-		produtoDao.altera(produto);
-		
-	//Atualizar relacionamento
+		produtoDao.alterar(produto);
+
+		// Atualizar relacionamento
 		ProdutoFornecedor produtoFornecedor = new ProdutoFornecedor();
 		produtoFornecedor.setIdFornecedor(fornecedorId);
 		produtoFornecedor.setIdProduto(produtoId);
-		
+
 		new ProdutoFornecedorDao().alterar(produtoFornecedor);
 		JOptionPane.showMessageDialog(null, message);
 
@@ -130,7 +130,7 @@ public class AlteraProduto extends HttpServlet {
 		rd.forward(req, resp);
 	}
 
-	// M�todo que pega o nome do arquivo
+	// Método que pega o nome do arquivo
 	public String getFileName(Part part) {
 		String header = part.getHeader("content-disposition");
 		for (String tmp : header.split(";")) {

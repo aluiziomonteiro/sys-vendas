@@ -31,7 +31,6 @@ public class Redirect extends HttpServlet {
 
 		try {
 			Class<?> tipo = Class.forName(tarefa);
-			@SuppressWarnings("deprecation")
 			Tarefa instance = (Tarefa) tipo.newInstance();
 			String pagina = instance.executa(request, response);
 
@@ -42,8 +41,6 @@ public class Redirect extends HttpServlet {
 			throw new ServletException(e);
 		
 		}
-
-		
 
 	}
 }

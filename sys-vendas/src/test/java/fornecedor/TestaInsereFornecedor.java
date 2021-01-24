@@ -18,17 +18,17 @@ public class TestaInsereFornecedor {
 		fornecedor.setNome("Hinode");
 		fornecedor.setCnpjCpf("091239898232198");
 		fornecedor.setCep("73350-101");
-		fornecedor.setEndereco("Vila Buritís Q.1 ");
+		fornecedor.setEndereco("Vila Buritï¿½s Q.1 ");
 		fornecedor.setBairro("Octogonal");
-		fornecedor.setCidade("Goianésia");
+		fornecedor.setCidade("Goianï¿½sia");
 		fornecedor.setComplemento("SCL");
 		fornecedor.setUf("AL");
 		fornecedor.setFone("41-12123434");
 		fornecedor.setEmail("hinode@hino.com.br");
-		fornecedor.setObservacao("Endereço fictício");
+		fornecedor.setObservacao("Endereï¿½o fictï¿½cio");
 		
 		FornecedorDao dao = new FornecedorDao();
-		dao.adicionaAltera(fornecedor);
+		dao.adicionar(fornecedor);
 		System.out.println("Fornecedor adicionado com sucesso");
 
 	}

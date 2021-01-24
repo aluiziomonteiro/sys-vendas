@@ -13,10 +13,10 @@ public class TestaInsereCategoria {
 
 	public static void main(String[] args) {
 		Categoria categoria = new Categoria();
-		categoria.setNome("Mãos");
+		categoria.setNome("Mï¿½os");
 		
 		CategoriaDao dao = new CategoriaDao();
-		dao.adicionaAltera(categoria);
+		dao.adicionar(categoria);
 		System.out.println("Categoria adicionada com sucesso.");
 		
 	}

@@ -20,17 +20,17 @@ public class TestaAlteraFornecedor {
 		fornecedor.setCep("73350-101");
 		fornecedor.setEndereco("Av. Eldorado ");
 		fornecedor.setBairro("Octogonow");
-		fornecedor.setCidade("Goianésia");
+		fornecedor.setCidade("Goianï¿½sia");
 		fornecedor.setComplemento("SCL");
 		fornecedor.setUf("AL");
 		fornecedor.setFone("41-12123434");
 		fornecedor.setEmail("hinode@hino.com.br");
-		fornecedor.setObservacao("Dados Fictício");
+		fornecedor.setObservacao("Dados Fictï¿½cio");
 		
 		fornecedor.setId(9);
 		
 		FornecedorDao dao = new FornecedorDao();
-		dao.adicionaAltera(fornecedor);
+		dao.alterar(fornecedor);
 		System.out.println("Fornecedor atualizado com sucesso");
 
 	}

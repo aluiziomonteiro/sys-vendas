@@ -48,7 +48,7 @@ public class AlteraFornecedor extends HttpServlet {
 		fornecedor.setObservacao(req.getParameter("observacao"));
 
 		// Salva Fornecedor
-		new FornecedorDao().altera(fornecedor);
+		new FornecedorDao().alterar(fornecedor);
 
 		JOptionPane.showMessageDialog(null, message);
 

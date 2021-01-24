@@ -387,40 +387,40 @@ public class OrcamentoDao {
 			sql = "select * from orcamentos as o inner join clientes as c inner join usuarios as u on o.fk_cliente = c.id and o.fk_usuario = u.id where c.nome like ?";
 			termo = "%" + clienteBuscado.getNome() + "%";
 		}
-		
+
 		try (PreparedStatement stmt = connection.prepareStatement(sql)) {
-				stmt.setString(1, termo);
-				ResultSet rs = stmt.executeQuery();
-				while (rs.next()) {
+			stmt.setString(1, termo);
+			ResultSet rs = stmt.executeQuery();
+			while (rs.next()) {
 
-					Cliente cliente = new Cliente();
-					cliente.setId(rs.getInt("fk_cliente"));
-					cliente.setNome(rs.getString("c.nome"));
+				Cliente cliente = new Cliente();
+				cliente.setId(rs.getInt("fk_cliente"));
+				cliente.setNome(rs.getString("c.nome"));
 
-					Usuario usuario = new Usuario();
-					usuario.setId(rs.getInt("fk_usuario"));
-					usuario.setNome(rs.getString("u.nome"));
+				Usuario usuario = new Usuario();
+				usuario.setId(rs.getInt("fk_usuario"));
+				usuario.setNome(rs.getString("u.nome"));
 
-					Orcamento orcamento = new Orcamento();
-					orcamento.setCliente(cliente);
-					orcamento.setId(rs.getInt("o.id"));
-					orcamento.setUsuario(usuario);
+				Orcamento orcamento = new Orcamento();
+				orcamento.setCliente(cliente);
+				orcamento.setId(rs.getInt("o.id"));
+				orcamento.setUsuario(usuario);
 
-					orcamento.setDescontos(rs.getBigDecimal("o.descontos"));
-					orcamento.setTotalOrcamento(rs.getBigDecimal("o.totalOrcamento"));
+				orcamento.setDescontos(rs.getBigDecimal("o.descontos"));
+				orcamento.setTotalOrcamento(rs.getBigDecimal("o.totalOrcamento"));
 
-					orcamento.setDataLancamento(rs.getDate("o.dataLancamento").toLocalDate());
-					orcamento.setSubTotalOrcamento(rs.getBigDecimal("o.subTotalOrcamento"));
-					orcamento.setTotalParcelas(rs.getInt("totalParcelas"));
-					orcamento.setParcelasPagas(rs.getInt("parcelasPagas"));
-					orcamento.setParcelasAPagar(rs.getInt("parcelasAPagar"));
-					list.add(orcamento);
-				}
-			
-			} catch (SQLException e) {
-				throw new RuntimeException(e);
+				orcamento.setDataLancamento(rs.getDate("o.dataLancamento").toLocalDate());
+				orcamento.setSubTotalOrcamento(rs.getBigDecimal("o.subTotalOrcamento"));
+				orcamento.setTotalParcelas(rs.getInt("totalParcelas"));
+				orcamento.setParcelasPagas(rs.getInt("parcelasPagas"));
+				orcamento.setParcelasAPagar(rs.getInt("parcelasAPagar"));
+				list.add(orcamento);
 			}
-		
+
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+
 		return list;
 
 	}

@@ -18,7 +18,7 @@ import br.com.aluizio.sysvendas.model.EnumSexo;
 import br.com.aluizio.sysvendas.model.EnumSituacao;
 
 /**
- * Servlet respons·vel por adicionar um cliente
+ * Servlet respons√°vel por adicionar um cliente
  */
 
 @WebServlet("/adicionar-cliente.jsp")
@@ -63,7 +63,7 @@ public class AdicionaCliente extends HttpServlet {
 		cliente.setObservacao(req.getParameter("observacao"));
 
 		// Salva Cliente
-		new ClienteDao().adiciona(cliente);
+		new ClienteDao().adicionar(cliente);
 
 		JOptionPane.showMessageDialog(null, message);
 		System.out.println(message);

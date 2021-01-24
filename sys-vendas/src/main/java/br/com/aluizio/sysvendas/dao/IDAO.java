@@ -8,9 +8,14 @@ import java.util.List;
 
 public interface IDAO {
 	void alterar(Object object);
+
 	void adicionar(Object object);
+
 	void remover(Object object);
+
 	Object buscaPorId(Object object);
+
 	List<Object> getList();
+
 	List<Object> buscaPorNome(Object object);
 }

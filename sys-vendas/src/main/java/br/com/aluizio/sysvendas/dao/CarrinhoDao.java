@@ -17,7 +17,7 @@ import br.com.aluizio.sysvendas.model.Orcamento;
 /**
  * CarrinhoDao.java
  * 
- * @author Aluizio Monteiro 11 de mar de 2019
+ * @author Aluizio Monteiro
  */
 
 public class CarrinhoDao {
@@ -53,8 +53,8 @@ public class CarrinhoDao {
 		}
 		return list;
 	}
-	
-	//Valor total do lucro
+
+	// Valor total do lucro
 	public BigDecimal getLucroLiquido() {
 		String sql = "select (sum(subTotal) - sum(custo)) as lucros from carrinho";
 
@@ -67,7 +67,7 @@ public class CarrinhoDao {
 			while (rs.next()) {
 				valor = rs.getBigDecimal("lucros");
 			}
-			
+
 			if (valor == null) {
 				valor = new BigDecimal("0.00");
 			}
@@ -78,57 +78,57 @@ public class CarrinhoDao {
 		}
 	}
 
-	//Valor total do lucro
-		public BigDecimal getLucroBruto() {
-			String sql = "select sum(subTotal) as lucros from carrinho";
+	// Valor total do lucro
+	public BigDecimal getLucroBruto() {
+		String sql = "select sum(subTotal) as lucros from carrinho";
 
-			BigDecimal valor = new BigDecimal("0.00");
+		BigDecimal valor = new BigDecimal("0.00");
 
-			try (PreparedStatement stmt = connection.prepareStatement(sql)) {
+		try (PreparedStatement stmt = connection.prepareStatement(sql)) {
 
-				ResultSet rs = stmt.executeQuery();
+			ResultSet rs = stmt.executeQuery();
 
-				while (rs.next()) {
-					valor = rs.getBigDecimal("lucros"); 
-				}
-				
-				if (valor == null) {
-					System.out.println("Valor carrinhodao "+valor);
-					valor = new BigDecimal("0.00");
-				}
-				
-				return valor;
-
-			} catch (SQLException e) {
-				throw new RuntimeException(e);
+			while (rs.next()) {
+				valor = rs.getBigDecimal("lucros");
 			}
-		}
-		
-	//Custo de produtos vendidos em um determinado mês
-		public List<Investimentos> getInvestimentosMes() {
-			String sql = "select sum(custo) as custos, data from carrinho group by month(data) order by data limit 12";
 
-			List<Investimentos> list = new ArrayList<>();
-
-			try (PreparedStatement stmt = connection.prepareStatement(sql)) {
-
-				ResultSet rs = stmt.executeQuery();
-
-				while (rs.next()) {
-					Investimentos investimentosMes = new Investimentos();
-
-					LocalDate data = rs.getDate("data").toLocalDate();
-
-					investimentosMes.setMes(data.getMonth().getValue());
-					investimentosMes.setAno(data.getYear());
-					investimentosMes.setValorTotal(rs.getBigDecimal("custos"));
-
-					list.add(investimentosMes);
-				}
-				return list;
-
-			} catch (SQLException e) {
-				throw new RuntimeException(e);
+			if (valor == null) {
+				System.out.println("Valor carrinhodao " + valor);
+				valor = new BigDecimal("0.00");
 			}
+
+			return valor;
+
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
 		}
+	}
+
+	// Custo de produtos vendidos em um determinado mï¿½s
+	public List<Investimentos> getInvestimentosMes() {
+		String sql = "select sum(custo) as custos, data from carrinho group by month(data) order by data limit 12";
+
+		List<Investimentos> list = new ArrayList<>();
+
+		try (PreparedStatement stmt = connection.prepareStatement(sql)) {
+
+			ResultSet rs = stmt.executeQuery();
+
+			while (rs.next()) {
+				Investimentos investimentosMes = new Investimentos();
+
+				LocalDate data = rs.getDate("data").toLocalDate();
+
+				investimentosMes.setMes(data.getMonth().getValue());
+				investimentosMes.setAno(data.getYear());
+				investimentosMes.setValorTotal(rs.getBigDecimal("custos"));
+
+				list.add(investimentosMes);
+			}
+			return list;
+
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+	}
 }

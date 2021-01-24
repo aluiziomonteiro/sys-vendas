@@ -260,9 +260,9 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table frodutos_fornecedores
+-- Table Produtos_fornecedores
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS frodutos_fornecedores (
+CREATE TABLE IF NOT EXISTS produtos_fornecedores (
   id INT(11) NOT NULL AUTO_INCREMENT,
   fk_produto INT(11) NULL DEFAULT NULL,
   fk_fornecedor INT(11) NULL DEFAULT NULL,

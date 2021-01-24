@@ -61,33 +61,31 @@ public class EstoqueDao {
 	}
 
 	// Altera
-		public void altera(Object object) {
-			String sql = "";
-			Estoque estoque = (Estoque) object;
-				sql = "Update Estoques set qtdEntrada=?, qtdMinima=?" + " where id=?";
+	public void altera(Object object) {
+		String sql = "";
+		Estoque estoque = (Estoque) object;
+		sql = "Update Estoques set qtdEntrada=?, qtdMinima=?" + " where id=?";
 
-			try (PreparedStatement stmt = connection.prepareStatement(sql)) {
-				stmt.setInt(1, estoque.getQtdEntrada());
-				stmt.setInt(2, estoque.getQtdMinima());
-				stmt.setInt(3, estoque.getId());
+		try (PreparedStatement stmt = connection.prepareStatement(sql)) {
+			stmt.setInt(1, estoque.getQtdEntrada());
+			stmt.setInt(2, estoque.getQtdMinima());
+			stmt.setInt(3, estoque.getId());
 
-				stmt.execute();
-				System.out.println("Estoque adicionado com sucesso");
-			} catch (SQLException e) {
-				System.out.println("Problemas ao adicionar Estoque");
-				throw new RuntimeException(e);
-			}
+			stmt.execute();
+			System.out.println("Estoque adicionado com sucesso");
+		} catch (SQLException e) {
+			System.out.println("Problemas ao adicionar Estoque");
+			throw new RuntimeException(e);
 		}
+	}
 
-		
-		
 	// Busca Maior Id
 	public int buscaMaiorId() {
 		String sql = "Select max(id) from Estoques";
 		int id = 0;
 		try (PreparedStatement stmt = connection.prepareStatement(sql)) {
 			ResultSet rs = stmt.executeQuery();
-			while (rs.next()) {	
+			while (rs.next()) {
 				id = rs.getInt(1);
 			}
 			return id;

@@ -18,7 +18,7 @@ import br.com.aluizio.sysvendas.model.EnumSexo;
 import br.com.aluizio.sysvendas.model.EnumSituacao;
 
 /**
- * Servlet responsável por adicionar e alterar um cliente
+ * Servlet responsï¿½vel por adicionar e alterar um cliente
  */
 
 @WebServlet("/alterar-cliente.jsp")
@@ -67,7 +67,7 @@ public class AlteraCliente extends HttpServlet {
 		cliente.setObservacao(req.getParameter("observacao"));
 
 		// Salva Cliente
-		new ClienteDao().altera(cliente);
+		new ClienteDao().alterar(cliente);
 
 		JOptionPane.showMessageDialog(null, message);
 		System.out.println(message);

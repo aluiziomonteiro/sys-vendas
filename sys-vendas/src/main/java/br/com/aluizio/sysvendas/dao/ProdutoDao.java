@@ -13,8 +13,10 @@ import br.com.aluizio.sysvendas.model.Categoria;
 import br.com.aluizio.sysvendas.model.Estoque;
 import br.com.aluizio.sysvendas.model.Fornecedor;
 import br.com.aluizio.sysvendas.model.Produto;
-
-public class ProdutoDao implements IDAO {
+/**
+ * @author Aluizio Monteiro
+ */
+public class ProdutoDao {
 	Connection connection;
 
 	public ProdutoDao() {
@@ -22,7 +24,6 @@ public class ProdutoDao implements IDAO {
 	}
 
 	// Listar Todos Produto
-	@Override
 	public List<Object> getList() {
 		String sql = "select * from produtos join fornecedores on produtos.fk_fornecedor = fornecedores.id";
 		List<Object> produtos = new ArrayList<>();
@@ -34,7 +35,7 @@ public class ProdutoDao implements IDAO {
 				Estoque estoque = new Estoque();
 				Categoria categoria = new Categoria();
 				Fornecedor fornecedor = new Fornecedor();
-				
+
 				produto.setId(rs.getInt("id"));
 				produto.setNome(rs.getString("nome"));
 				produto.setDescricao(rs.getString("descricao"));
@@ -71,7 +72,7 @@ public class ProdutoDao implements IDAO {
 			stmt.setString(1, termo);
 			ResultSet rs = stmt.executeQuery();
 			if (!rs.next()) {
-				System.out.println("não existe");
+				System.out.println("nï¿½o existe");
 				return false;
 
 			} else {
@@ -86,7 +87,6 @@ public class ProdutoDao implements IDAO {
 	}
 
 	// Adicionar e Alterar Produto
-	@Override
 	public void adicionaAltera(Object object) {
 		Produto produto = (Produto) object;
 		String sql = "";
@@ -121,43 +121,37 @@ public class ProdutoDao implements IDAO {
 		}
 	}
 
-	
 	// Alterar Produto
-		public void altera(Object object) {
-			Produto produto = (Produto) object;
-			String sql = "update Produtos set nome=?, descricao=?, indicacao=?, "
-						+ " volume=?, custoUnid=?, sugestaoVenda=?, fk_categoria=?, " 
-						+ " fk_estoque=?, lucro=?, percentual=?, imagem=? "
-						+ " where id=?"; 
-			
-				try (PreparedStatement stmt = connection.prepareStatement(sql)) {
+	public void alterar(Object object) {
+		Produto produto = (Produto) object;
+		String sql = "update Produtos set nome=?, descricao=?, indicacao=?, "
+				+ " volume=?, custoUnid=?, sugestaoVenda=?, fk_categoria=?, "
+				+ " fk_estoque=?, lucro=?, percentual=?, imagem=? " + " where id=?";
 
-				stmt.setString(1, produto.getNome());
-				stmt.setString(2, produto.getDescricao());
-				stmt.setString(3, produto.getIndicacao());
-				stmt.setString(4, produto.getVolume());
-				stmt.setBigDecimal(5, produto.getCustoUnid());
-				stmt.setBigDecimal(6, produto.getSugestaoVenda());
-				stmt.setInt(7, produto.getCategoria().getId());
-				//stmt.setInt(7, 96);
-				stmt.setInt(8, produto.getEstoque().getId());
-				stmt.setBigDecimal(9, produto.getLucro());
-				stmt.setDouble(10, produto.getPercentual());
-				stmt.setString(11, produto.getImagem());
-				stmt.setInt(12, produto.getId());
-				
-				stmt.execute();
+		try (PreparedStatement stmt = connection.prepareStatement(sql)) {
 
-			} catch (SQLException e) {
-				throw new RuntimeException(e);
-			}
+			stmt.setString(1, produto.getNome());
+			stmt.setString(2, produto.getDescricao());
+			stmt.setString(3, produto.getIndicacao());
+			stmt.setString(4, produto.getVolume());
+			stmt.setBigDecimal(5, produto.getCustoUnid());
+			stmt.setBigDecimal(6, produto.getSugestaoVenda());
+			stmt.setInt(7, produto.getCategoria().getId());
+			// stmt.setInt(7, 96);
+			stmt.setInt(8, produto.getEstoque().getId());
+			stmt.setBigDecimal(9, produto.getLucro());
+			stmt.setDouble(10, produto.getPercentual());
+			stmt.setString(11, produto.getImagem());
+			stmt.setInt(12, produto.getId());
+
+			stmt.execute();
+
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
 		}
+	}
 
-		
-		
-		
 	// Remove Produto
-	@Override
 	public void remover(Object object) {
 		Produto produto = (Produto) object;
 		String sql = "Delete from Produtos where id=?";
@@ -173,7 +167,6 @@ public class ProdutoDao implements IDAO {
 	}
 
 	// Busca Produto por id
-	@Override
 	public Object buscaPorId(Object object) {
 		Produto produtoBuscado = (Produto) object;
 		Produto produto = new Produto();
@@ -240,15 +233,14 @@ public class ProdutoDao implements IDAO {
 	}
 
 	// Busca Produto por nome
-	@Override
 	public List<Object> buscaPorNome(Object object) {
 		Produto p = (Produto) object;
 		List<Object> produtos = new ArrayList<>();
 		if (!existProduto(p)) {
-			System.out.println("Produto não existe.");
+			System.out.println("Produto nï¿½o existe.");
 		} else {
-			String sql = "select Produtos.*, Estoques.* from Produtos "
-					+ "join Estoques on Produtos.fk_estoque = Estoques.id " + "where Produtos.nome like ?";
+			String sql = "select produtos.*, Estoques.* from produtos "
+					+ "join estoques on produtos.fk_estoque = estoques.id " + "where produtos.nome like ?";
 
 			try (PreparedStatement stmt = connection.prepareStatement(sql)) {
 				String termo = "%" + p.getNome() + "%";
@@ -289,7 +281,7 @@ public class ProdutoDao implements IDAO {
 
 	// Busca maxId
 	public int buscaMaiorId() {
-		String sql = "Select max(id) from Produtos";
+		String sql = "Select max(id) from produtos";
 		int id = 0;
 		try (PreparedStatement stmt = connection.prepareStatement(sql)) {
 			ResultSet rs = stmt.executeQuery();
@@ -304,7 +296,6 @@ public class ProdutoDao implements IDAO {
 
 	// Busca os 5 produtos mais vendidos
 	public List<Produto> topList() {
-		//String sql = "select produtos.*, estoques.* from produtos inner join estoques  on  estoques.id = fk_estoque group by qtdSaida desc limit 5";//
 		String sql = "select produtos.*, estoques.* from produtos inner join estoques order by qtdSaida desc limit 5";
 		List<Produto> list = new ArrayList<>();
 
@@ -343,7 +334,7 @@ public class ProdutoDao implements IDAO {
 		}
 	}
 
-	//Produtos Na reserva
+	// Produtos Na reserva
 	public List<Produto> reservaList() {
 		String sql = "select produtos.*, estoques.* from produtos inner join estoques on produtos.fk_estoque = estoques.id where (qtdDisponivel<qtdMinima) limit 5";
 		List<Produto> list = new ArrayList<>();
@@ -383,7 +374,7 @@ public class ProdutoDao implements IDAO {
 		}
 	}
 
-	//produtos esgotados
+	// produtos esgotados
 	public List<Produto> esgotadoList() {
 		String sql = "select produtos.*, estoques.* from produtos right join estoques on produtos.fk_estoque = estoques.id where (estoques.qtdDisponivel<=?) limit ?";
 		List<Produto> list = new ArrayList<>();
@@ -424,8 +415,7 @@ public class ProdutoDao implements IDAO {
 		}
 	}
 
-	
-	//Retorna o valor Investido
+	// Retorna o valor Investido
 	public Object getTotalInvestido() {
 		String sql = "select sum(produtos.custoUnid * estoques.qtdEntrada) "
 				+ "from produtos join estoques on fk_estoque = estoques.id";
@@ -435,8 +425,8 @@ public class ProdutoDao implements IDAO {
 			while (rs.next()) {
 				totalInvestido = rs.getBigDecimal(1);
 			}
-			
-			if(totalInvestido == null) {
+
+			if (totalInvestido == null) {
 				totalInvestido = new BigDecimal("0.00");
 			}
 			return totalInvestido;
@@ -445,11 +435,4 @@ public class ProdutoDao implements IDAO {
 			throw new RuntimeException(e);
 		}
 	}
-
-	@Override
-	public void adiciona(Object object) {
-		// TODO Auto-generated method stub
-		
-	}
 }
-

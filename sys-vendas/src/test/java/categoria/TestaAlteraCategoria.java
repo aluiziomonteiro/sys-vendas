@@ -16,7 +16,7 @@ public class TestaAlteraCategoria {
 		categoria.setNome("Unhas");
 		categoria.setId(1);
 		CategoriaDao dao = new CategoriaDao();
-		dao.adicionaAltera(categoria);
+		dao.adicionar(categoria);
 		System.out.println("Categoria alterada com sucesso");
 
 	}

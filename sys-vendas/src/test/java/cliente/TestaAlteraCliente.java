@@ -34,18 +34,18 @@ public class TestaAlteraCliente {
 
 		cliente.setEndereco("Rua do Batizado");
 		cliente.setBairro("Novo");
-		cliente.setCidade("Ortolãndia");
+		cliente.setCidade("Ortolï¿½ndia");
 		cliente.setComplemento("123");
 		cliente.setNumero("12123");
 		cliente.setUf("df");
 		cliente.setCep("123121233");
 		cliente.setFone("22 322322");
-		cliente.setObservacao("Endereço de casa");
+		cliente.setObservacao("Endereï¿½o de casa");
 		
 		cliente.setId(24);
 		
 		ClienteDao dao = new ClienteDao();
-		dao.adicionaAltera(cliente);
+		dao.alterar(cliente);
 		
 		System.out.println("Cliente Alterado com sucesso.");
 	}
