@@ -1,15 +1,13 @@
 package dashboard;
 
 import java.math.BigDecimal;
-import java.util.List;
 
 import br.com.aluizio.sysvendas.dao.PagamentoDao;
 import br.com.aluizio.sysvendas.dao.ProdutoDao;
-import br.com.aluizio.sysvendas.model.Produto;
 
 /**
  * TestaVisaoGeral.java
- * 
+ * 	
  * @author Aluizio Monteiro 24 de abr de 2019
  */
 
@@ -39,14 +37,14 @@ public class TestaVisaoGeral {
 		BigDecimal totalVendas = new BigDecimal("0.00");
 		totalVendas = pagamentoDao.buscaLucro();
 		System.out.println(" - Bruto: " + totalVendas);
-		System.out.println(" - Líquido: " + totalVendas.subtract(totalInvestido));
+		System.out.println(" - Lï¿½quido: " + totalVendas.subtract(totalInvestido));
 
 		// Extimativa de Lucro
 		// Total Lucro ( soma QUITADO, ATRASADO E A_PAGAR e subtrai pelo totalInvestido)
 		System.out.println("Extimativa de Lucro");
 		BigDecimal extimativaLucro = pagamentoDao.buscaExtimativas();
 		System.out.println(" - Bruto: " + (extimativaLucro));
-		System.out.println(" - Líquido: " + (extimativaLucro.subtract(totalInvestido)));
+		System.out.println(" - Lï¿½quido: " + (extimativaLucro.subtract(totalInvestido)));
 
 	}
 

@@ -39,7 +39,7 @@ public class SalvaOrcamento extends HttpServlet {
 
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		// Pega Usuário
+		// Pega Usuï¿½rio
 		usuarioLogado = request.getSession(false);
 		Usuario usuario = (Usuario) usuarioLogado.getAttribute("usuarioLogado");
 
@@ -47,7 +47,7 @@ public class SalvaOrcamento extends HttpServlet {
 		sessaoCliente = request.getSession(false);
 		Cliente cliente = (Cliente) sessaoCliente.getAttribute("sessaoCliente");
 
-		// Popula Orçamento e Cliente
+		// Popula Orï¿½amento e Cliente
 		Orcamento orcamento = new Orcamento();
 		orcamento.setUsuario(usuario);
 		orcamento.setCliente(cliente);
@@ -88,6 +88,7 @@ public class SalvaOrcamento extends HttpServlet {
 
 		// Pega os produtos do carrinho
 		sessionProdutos = request.getSession(false);
+		@SuppressWarnings("unchecked")
 		ArrayList<Carrinho> list = (ArrayList<Carrinho>) sessionProdutos.getAttribute("carroCompras");
 
 		
@@ -96,7 +97,7 @@ public class SalvaOrcamento extends HttpServlet {
 		
 		
 		//Calculainvestimento
-		//setar custo unidade no banco e setar a data atual ao cadastrar um orçamento
+		//setar custo unidade no banco e setar a data atual ao cadastrar um orï¿½amento
 			//select (carrinho.qtd * produtos.custoUnid), month(carrinho.data) from carrinho inner join produtos on carrinho.produtoId = produtos.id ;
 		
 		List<Pagamentos> pagamentoList = new ArrayList<>();
@@ -109,13 +110,13 @@ public class SalvaOrcamento extends HttpServlet {
 
 			String statusText = String.valueOf(request.getParameter("checkBoxPagar["+i+"]"));
 			
-			System.out.println("conteúdo do checkbox: "+statusText);
+			System.out.println("conteï¿½do do checkbox: "+statusText);
 			
 			EnumStatus status = null;
 			
 			if (statusText.equals("on")) {
 				status = EnumStatus.valueOf("QUITADO");
-				parcelasPagas++; // COnta as parcelas que já foram pagas
+				parcelasPagas++; // COnta as parcelas que jï¿½ foram pagas
 			} else {
 				status = EnumStatus.valueOf("A_PAGAR");
 			}
@@ -130,7 +131,7 @@ public class SalvaOrcamento extends HttpServlet {
 			pagamentoList.add(pagamento);
 
 			System.out.println(pagamento);
-			System.out.println(" - Número da parcela: " + i);
+			System.out.println(" - Nï¿½mero da parcela: " + i);
 			System.out.println("A parcela foi paga? " + status);
 
 		}
@@ -139,7 +140,7 @@ public class SalvaOrcamento extends HttpServlet {
 		orcamento.setParcelasPagas(parcelasPagas);
 		orcamento.setTotalParcelas(totalParcelas);
 
-		// Manda Orçamento para o banco
+		// Manda Orï¿½amento para o banco
 		dao.salvaOrcamento(orcamento);
 		dao.salvaCarrinho(list);
 

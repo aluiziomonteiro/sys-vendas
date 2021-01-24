@@ -23,7 +23,7 @@ public class Redirect extends HttpServlet {
 		String tarefa = request.getParameter("tarefa");
 
 		if (tarefa == null) {
-			throw new IllegalArgumentException("Não identificou uma página");
+			throw new IllegalArgumentException("Nï¿½o identificou uma pï¿½gina");
 
 		}
 
@@ -31,6 +31,7 @@ public class Redirect extends HttpServlet {
 
 		try {
 			Class<?> tipo = Class.forName(tarefa);
+			@SuppressWarnings("deprecation")
 			Tarefa instance = (Tarefa) tipo.newInstance();
 			String pagina = instance.executa(request, response);
 

@@ -22,15 +22,15 @@ public class UsuarioDao implements IDAO {
 		this.connection = new ConnectionFactory().getConnection();
 	}
 
-	// Excluir Usuários
+	// Excluir Usuarios
 	@Override
 	public void remover(Object object) {
 		Usuario usuario = (Usuario) object;
-		String sql = "delete from Usuarios where id=?";
+		String sql = "delete from usuarios where id=?";
 		try (PreparedStatement stmt = connection.prepareStatement(sql)) {
 			stmt.setInt(1, usuario.getId());
 			stmt.execute();
-			System.out.println("Usuário excluído.");
+			System.out.println("UsuÃ¡rio excluÃ­do.");
 
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
@@ -40,7 +40,7 @@ public class UsuarioDao implements IDAO {
 
 	// Busca por Login e Senha
 	public Usuario buscaUsuario(Usuario usuarioBuscado) {
-		String sql = "Select * from Usuarios where login=? and senha=?";
+		String sql = "Select * from usuarios where login=? and senha=?";
 		try (PreparedStatement stmt = connection.prepareStatement(sql)) {
 			stmt.setString(1, usuarioBuscado.getLogin());
 			stmt.setString(2, usuarioBuscado.getSenha());
@@ -64,7 +64,7 @@ public class UsuarioDao implements IDAO {
 
 	// Se usuario existe
 	public boolean isUsuario(Usuario usuario) {
-		String sql = "Select * from Usuarios where login=?";
+		String sql = "Select * from usuarios where login=?";
 		try (PreparedStatement stmt = connection.prepareStatement(sql)) {
 			stmt.setString(1, usuario.getLogin());
 
@@ -86,9 +86,9 @@ public class UsuarioDao implements IDAO {
 		String sql = "";
 
 		if (usuario.getId() == null) {
-			sql = "Insert into Usuarios (nome, login, senha) " + " values (?,?,?)";
+			sql = "Insert into usuarios (nome, login, senha) " + " values (?,?,?)";
 		} else {
-			sql = "Update Usuarios set nome=?, login=?, senha=? " + " where id=" + usuario.getId();
+			sql = "Update usuarios set nome=?, login=?, senha=? " + " where id=" + usuario.getId();
 		}
 
 		try (PreparedStatement stmt = connection.prepareStatement(sql)) {
@@ -106,7 +106,7 @@ public class UsuarioDao implements IDAO {
 	public Object buscaPorId(Object object) {
 		Usuario usuario = (Usuario) object;
 
-		String sql = "select * from Usuarios where id=?";
+		String sql = "select * from usuarios where id=?";
 
 		try (PreparedStatement stmt = connection.prepareStatement(sql)) {
 			stmt.setInt(1, usuario.getId());
@@ -127,7 +127,7 @@ public class UsuarioDao implements IDAO {
 	@Override
 	public List<Object> getList() {
 		List<Object> lista = new ArrayList<>();
-		String sql = "Select * from Usuarios";
+		String sql = "Select * from usuarios";
 		try (PreparedStatement stmt = connection.prepareStatement(sql)){
 			ResultSet rs = stmt.executeQuery();
 			while(rs.next()) {
@@ -150,9 +150,9 @@ public class UsuarioDao implements IDAO {
 		Usuario u = (Usuario) object;
 		List<Object> usuarios = new ArrayList<>();
 		if (!existUsuario(u)) {
-			System.out.println("Usuario não existe.");
+			System.out.println("Usuario nï¿½o existe.");
 		} else {
-			String sql = "select * from Usuarios where nome like ?";
+			String sql = "select * from usuarios where nome like ?";
 
 			try (PreparedStatement stmt = connection.prepareStatement(sql)) {
 				String termo = "%" + u.getNome() + "%";
@@ -179,14 +179,14 @@ public class UsuarioDao implements IDAO {
 	// Verifica se Produto existe
 
 	public boolean existUsuario(Usuario usuario) {
-		String sql = "select * from Usuarios where nome like ?";
+		String sql = "select * from usuarios where nome like ?";
 
 		try (PreparedStatement stmt = connection.prepareStatement(sql)) {
 			String termo = "%" + usuario.getNome() + "%";
 			stmt.setString(1, termo);
 			ResultSet rs = stmt.executeQuery();
 			if (!rs.next()) {
-				System.out.println("não existe");
+				System.out.println("nï¿½o existe");
 				return false;
 
 			} else {

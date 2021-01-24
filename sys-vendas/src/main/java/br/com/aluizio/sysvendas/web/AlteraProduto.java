@@ -14,7 +14,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 import javax.swing.JOptionPane;
 
-import br.com.aluizio.sysvendas.dao.CategoriaDao;
 import br.com.aluizio.sysvendas.dao.EstoqueDao;
 import br.com.aluizio.sysvendas.dao.ProdutoDao;
 import br.com.aluizio.sysvendas.dao.ProdutoFornecedorDao;
@@ -31,8 +30,8 @@ import br.com.aluizio.sysvendas.model.ProdutoFornecedor;
 @MultipartConfig(
 
 		fileSizeThreshold = 1024 * 1024, // Limite para cntrole de ram/rom 1MB
-		maxFileSize = 1024 * 1024 * 4, // limite de aceitação 4MB
-		maxRequestSize = 1024 * 1024 * 4 // limite da requisição 4MB
+		maxFileSize = 1024 * 1024 * 4, // limite de aceitaï¿½ï¿½o 4MB
+		maxRequestSize = 1024 * 1024 * 4 // limite da requisiï¿½ï¿½o 4MB
 )
 
 @WebServlet("/alterar-produto.jsp")
@@ -58,7 +57,7 @@ public class AlteraProduto extends HttpServlet {
 		File dir = new File("C:\\Users\\junior\\Desktop\\uploads");
 		File arquivo = null;
 
-		// Se o diretório não existe ele cria
+		// Se o diretï¿½rio nï¿½o existe ele cria
 		if (!dir.isDirectory()) {
 			dir.mkdir();
 		}
@@ -131,7 +130,7 @@ public class AlteraProduto extends HttpServlet {
 		rd.forward(req, resp);
 	}
 
-	// Método que pega o nome do arquivo
+	// Mï¿½todo que pega o nome do arquivo
 	public String getFileName(Part part) {
 		String header = part.getHeader("content-disposition");
 		for (String tmp : header.split(";")) {

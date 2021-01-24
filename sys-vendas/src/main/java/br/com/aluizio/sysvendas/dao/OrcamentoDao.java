@@ -80,7 +80,7 @@ public class OrcamentoDao {
 		}
 	}
 
-	// Busca maior id dos orçamentos
+	// Busca maior id dos orï¿½amentos
 	public int buscaMaiorId() {
 		String sql = "Select max(id) from Orcamentos";
 		int id = 0;
@@ -97,7 +97,7 @@ public class OrcamentoDao {
 
 	// Salva carrinho de compras
 	public void salvaCarrinho(List<Carrinho> list) {
-		int maiorId = buscaMaiorId(); // orçamento
+		int maiorId = buscaMaiorId(); // orï¿½amento
 		String sql = "Insert into carrinho ("
 				+ "fk_orcamento, produtoNome, qtd, valorUnid, subTotal, produtoId, data, custo)"
 				+ "values (?,?,?,?,?,?,?,?)";
@@ -190,7 +190,7 @@ public class OrcamentoDao {
 	}
 
 	/**
-	 * Lista todos os orçamentos
+	 * Lista todos os orcamentos
 	 * 
 	 * @return
 	 */
@@ -250,7 +250,7 @@ public class OrcamentoDao {
 		}
 	}
 
-	// Lista com Somatório de vendas por mês
+	// Lista com Somatorio de vendas por mï¿½s
 	public List<Vendas> getVendasMes() {
 		String sql = "select sum(totalOrcamento) as total, dataLancamento as data, year(dataLancamento) as ano from orcamentos group by month(dataLancamento) limit 12";
 
@@ -278,7 +278,7 @@ public class OrcamentoDao {
 		}
 	}
 
-	// Lista com Somatório de vendas por ano
+	// Lista com Somatï¿½rio de vendas por ano
 	public List<Vendas> getVendasAno() {
 		String sql = "select sum(totalOrcamento) as total, dataLancamento as data from orcamentos group by year(dataLancamento)";
 
@@ -425,13 +425,13 @@ public class OrcamentoDao {
 
 	}
 
-	// Verifica se existe orçamento para o cliente
+	// Verifica se existe orï¿½amento para o cliente
 	public boolean existOrcamento(Cliente cliente) {
 		ClienteDao dao = new ClienteDao();
 
-		// Se o cliente não existe
+		// Se o cliente nï¿½o existe
 		if (!dao.existCliente(cliente)) {
-			System.out.println("Cliente não existe");
+			System.out.println("Cliente nï¿½o existe");
 			return false;
 		} else {
 			String sql = "select * from Orcamentos as o inner join Clientes as c on o.fk_cliente = c.id where c.nome like ?";
@@ -442,10 +442,10 @@ public class OrcamentoDao {
 				ResultSet rs = stmt.executeQuery();
 
 				if (!rs.next()) {
-					System.out.println("Orçamento não existe");
+					System.out.println("Orï¿½amento nï¿½o existe");
 					return false;
 				} else {
-					System.out.println("Orçamento existe  linha 450");
+					System.out.println("Orï¿½amento existe  linha 450");
 					return true;
 				}
 

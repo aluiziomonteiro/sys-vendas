@@ -62,13 +62,13 @@ ___
 1. Crie uma conexão no Worckbench tendo como user e pass: root, root;
 2. Baixe o schema em: https://github.com/aluiziomonteiro/sys-vendas/blob/dev/docs/schema_sys_vendas.sql;
 3. Importe-o para o Worchbench;
-4. Execute um INSERT INT USUARiOS VALUES('admin','admin','admin'); para setar uma senha de acesso ao sistema;
+4. Execute: INSERT INT USUARIOS VALUES('admin','admin','admin'); para setar uma senha de acesso ao sistema;
 4. Faça o download do .zip sysvendas na branch dev ou por este link: https://github.com/aluiziomonteiro/sys-vendas;
 5. Importe para o eclipse como um Maven Project;
 6. Use o TomCat 8;
 7. Starte o Servidor;
 8. Acesse o URL no navegador: localhost:8080/sys-vendas/;
-9. Faça login com usuário e senha admin, admin.
+9. Faça login com usuário e senha aluizio, aluizio.
 <br /><br />
 ![N|Solid](https://github.com/aluiziomonteiro/sys-vendas/blob/master/fotos-sisvendas/tela-login.png?raw=true) 
 

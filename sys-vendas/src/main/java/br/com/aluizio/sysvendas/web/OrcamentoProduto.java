@@ -15,7 +15,7 @@ import javax.servlet.http.HttpSession;
 import br.com.aluizio.sysvendas.model.Carrinho;
 
 /**
- * Controla a adição e remoção de produtos do orçamento.jsp (session).
+ * Controla a adiï¿½ï¿½o e remoï¿½ï¿½o de produtos do orï¿½amento.jsp (session).
  */
 @WebServlet({ "/remover-carrinho.jsp", "/agregar-carrinho.jsp" })
 public class OrcamentoProduto extends HttpServlet {
@@ -45,6 +45,7 @@ public class OrcamentoProduto extends HttpServlet {
 	}
  
 	// Exclui produto
+	@SuppressWarnings("unchecked")
 	private void remover(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		sessionProdutos = request.getSession(false);
 		list = (ArrayList<Carrinho>) sessionProdutos.getAttribute("carroCompras");
@@ -53,6 +54,7 @@ public class OrcamentoProduto extends HttpServlet {
 		response.sendRedirect("orcamentos.jsp");
 	}
 
+	@SuppressWarnings("unchecked")
 	private void agregar(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		sessionProdutos = request.getSession(false);
 		list = (ArrayList<Carrinho>) sessionProdutos.getAttribute("carroCompras");
