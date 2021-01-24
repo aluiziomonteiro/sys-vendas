@@ -296,6 +296,6 @@ set session sql_mode=
 -- Insert usuário
 -- -----------------------------------------------------
 
-INSERT INTO usuarios(nome, login, senha) VALUES ('Aluizio Monteiro', 'aluizio', 'aluizio');
+INSERT INTO usuarios(nome, login, senha) VALUES ('Aluizio Monteiro', 'admin', 'admin');
     
   

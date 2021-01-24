@@ -165,7 +165,7 @@ public class PagamentoDao {
 
 	}
 
-	// Busca proximas dívidas a receber
+	// Busca proximas dï¿½vidas a receber
 	public List<Dividas> buscaDividasAReceber() {
 		List<Dividas> lista = new ArrayList<>();
 
@@ -193,7 +193,7 @@ public class PagamentoDao {
 
 	}
 
-	// Busca dívidas atrasadas
+	// Busca dï¿½vidas atrasadas
 	public List<Dividas> buscaDividasAtrasadas() {
 		List<Dividas> lista = new ArrayList<>();
 
@@ -219,7 +219,7 @@ public class PagamentoDao {
 			throw new RuntimeException(e);
 		}
 
-	} ///////////////////////////////////////
+	}
 
 	// Dividas por semana
 	public List<Pagamentos> buscaDividasSemana() {
@@ -338,7 +338,6 @@ public class PagamentoDao {
 			}
 		}
 		
-		/////////////////////////////////////////
 		
 		//Busca status para atualizar
 		public void verificaPagamentosVencidos() {
