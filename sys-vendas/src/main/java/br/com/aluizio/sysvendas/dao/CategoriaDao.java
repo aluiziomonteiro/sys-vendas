@@ -25,7 +25,7 @@ public class CategoriaDao implements IDAO {
 
 	//inserir Categoria
 	public void adicionar(Object object) {
-		String sql = "Insert into Categorias (nome) value (?)";
+		String sql = "Insert into categorias (nome) value (?)";
 		Categoria categoria = (Categoria) object;
 
 		try (PreparedStatement stmt = connection.prepareStatement(sql)) {
@@ -39,7 +39,7 @@ public class CategoriaDao implements IDAO {
 	//Alterar Categoria
 	public void alterar(Object object) {
 
-		String sql = "update Categorias set nome= ? where id= ? ";
+		String sql = "update categorias set nome= ? where id= ? ";
 		Categoria categoria = (Categoria) object;
 
 		try (PreparedStatement stmt = connection.prepareStatement(sql)) {
@@ -51,21 +51,6 @@ public class CategoriaDao implements IDAO {
 		}
 	}
 
-	/*
-	 * // Busca Categoria pelo id do produto public Object buscaPorProdutoId(Object
-	 * object) { Produto produto = (Produto) object; Categoria categoria = new
-	 * Categoria(); String sql = "select * from Categorias join Produtos " +
-	 * " on Categorias.id = Produtos.fk_categoria where Produtos.id=?";
-	 * 
-	 * try (PreparedStatement stmt = connection.prepareStatement(sql)) {
-	 * stmt.setInt(1, produto.getId()); System.out.println("Id do Produto: " +
-	 * produto.getId()); ResultSet rs = stmt.executeQuery(); if (rs.next()) {
-	 * categoria.setId(rs.getInt("id")); categoria.setNome(rs.getString("nome")); }
-	 * 
-	 * } catch (SQLException e) { throw new RuntimeException(e); } return categoria;
-	 * }
-	 */
-
 	// Busca por nome
 	@Override
 	public List<Object> buscaPorNome(Object object) {
@@ -73,10 +58,10 @@ public class CategoriaDao implements IDAO {
 		List<Object> lista = new ArrayList<>();
 
 		if (!existCategoria(c)) {
-			System.out.println("Categoria não existe");
+			System.out.println("Categoria nï¿½o existe");
 
 		} else {
-			String sql = "select * from Categorias where nome like ?";
+			String sql = "select * from categorias where nome like ?";
 
 			try (PreparedStatement stmt = connection.prepareStatement(sql)) {
 				String termo = "%" + c.getNome() + "%";
@@ -101,7 +86,7 @@ public class CategoriaDao implements IDAO {
 
 	// Verifica se Cliente existe
 	public boolean existCategoria(Categoria categoria) {
-		String sql = "select * from Categorias where nome like ?";
+		String sql = "select * from categorias where nome like ?";
 
 		try (PreparedStatement stmt = connection.prepareStatement(sql)) {
 			String termo = "%" + categoria.getNome() + "%";
@@ -109,7 +94,7 @@ public class CategoriaDao implements IDAO {
 			ResultSet rs = stmt.executeQuery();
 
 			if (!rs.next()) {
-				System.out.println("Categoria não existe");
+				System.out.println("Categoria nï¿½o existe");
 				return false;
 			} else {
 				System.out.println("Categoria existe");
@@ -125,7 +110,7 @@ public class CategoriaDao implements IDAO {
 	@Override
 	public void remover(Object object) {
 		Categoria categoria = (Categoria) object;
-		String sql = "Delete from Categorias where id=?";
+		String sql = "Delete from categorias where id=?";
 		try (PreparedStatement stmt = connection.prepareStatement(sql)) {
 			stmt.setInt(1, categoria.getId());
 			stmt.execute();
@@ -137,7 +122,7 @@ public class CategoriaDao implements IDAO {
 	// Lista Categorias
 	@Override
 	public List<Object> getList() {
-		String sql = "select * from Categorias";
+		String sql = "select * from categorias";
 
 		try (PreparedStatement stmt = connection.prepareStatement(sql)) {
 			ResultSet rs = stmt.executeQuery();
@@ -158,7 +143,7 @@ public class CategoriaDao implements IDAO {
 	@Override
 	public Object buscaPorId(Object object) {
 		Categoria categoria = (Categoria) object;
-		String sql = "select * from Categorias " + " where id=?";
+		String sql = "select * from categorias " + " where id=?";
 
 		try (PreparedStatement stmt = connection.prepareStatement(sql)) {
 			stmt.setInt(1, categoria.getId());
@@ -179,12 +164,6 @@ public class CategoriaDao implements IDAO {
 	public void adicionaAltera(Object object) {
 		// TODO Auto-generated method stub
 
-	}
-
-	@Override
-	public void altera(Object object) {
-		// TODO Auto-generated method stub
-		
 	}
 
 	@Override

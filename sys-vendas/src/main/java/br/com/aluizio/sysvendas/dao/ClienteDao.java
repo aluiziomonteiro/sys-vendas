@@ -25,10 +25,10 @@ public class ClienteDao implements IDAO {
 	}
 
 	// Altera Cliente
-		public void altera(Object object) {
+		public void alterar(Object object) {
 			Cliente cliente = (Cliente) object;
 
-				String sql = "update Clientes set pessoa=?, situacao=?," + " sexo=?, nome=?, sobreNome=?, nascimento=?, "
+				String sql = "update clientes set pessoa=?, situacao=?," + " sexo=?, nome=?, sobreNome=?, nascimento=?, "
 						+ " email=?, celular=?, endereco=?, bairro=?, cidade=?, "
 						+ " complemento=?, numero=?, uf=?, cep=?, fone=?, observacao=? " + " where id=" + cliente.getId();
 
@@ -62,9 +62,9 @@ public class ClienteDao implements IDAO {
 
 		
 		// Adiciona Cliente
-		public void adiciona(Object object) {
+		public void adicionar(Object object) {
 			Cliente cliente = (Cliente) object;
-			String sql ="insert into Clientes (pessoa, situacao," + " sexo, nome, sobreNome, nascimento, "
+			String sql ="insert into clientes (pessoa, situacao," + " sexo, nome, sobreNome, nascimento, "
 						+ " email, celular, endereco, bairro, cidade, "
 						+ " complemento, numero, uf, cep, fone, observacao) "
 						+ " values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
@@ -101,7 +101,7 @@ public class ClienteDao implements IDAO {
 	@Override
 	public void remover(Object object) {
 		Cliente cliente = (Cliente) object;
-		String sql = "Delete from Clientes where id=?";
+		String sql = "Delete from clientes where id=?";
 
 		try (PreparedStatement stmt = connection.prepareStatement(sql)) {
 			stmt.setInt(1, cliente.getId());
@@ -117,10 +117,7 @@ public class ClienteDao implements IDAO {
 	@Override
 	public Object buscaPorId(Object object) {
 		Cliente clienteBuscado = (Cliente) object;
-		String sql = "Select * from Clientes as c where c.id=?";
-		/*String sql = "Select * from Clientes as c join orcamentos as o "
-			+ "on c.id = o.fk_cliente "
-			+ "where c.id=?";*/
+		String sql = "Select * from clientes as c where c.id=?";
 		
 		Cliente cliente = new Cliente();
 
@@ -158,7 +155,7 @@ public class ClienteDao implements IDAO {
 	// Listar
 	@Override
 	public List<Object> getList() {
-		String sql = "Select * from Clientes";
+		String sql = "Select * from clientes";
 
 		List<Object> lista = new ArrayList<>();
 
@@ -195,7 +192,7 @@ public class ClienteDao implements IDAO {
 
 	// Busca o ultimo Id
 	public int buscaMaiorId() {
-		String sql = "Select MAX(id) from Clientes";
+		String sql = "Select MAX(id) from clientes";
 		int id = 0;
 		try (PreparedStatement stmt = connection.prepareStatement(sql)) {
 			ResultSet rs = stmt.executeQuery();
@@ -218,10 +215,10 @@ public class ClienteDao implements IDAO {
 		List<Object> lista = new ArrayList<>();
 
 		if (!existCliente(c)) {
-			System.out.println("Cliente não existe");
+			System.out.println("Cliente nï¿½o existe");
 
 		} else {
-			String sql = "select * from Clientes where nome like ?";
+			String sql = "select * from clientes where nome like ?";
 
 			try (PreparedStatement stmt = connection.prepareStatement(sql)) {
 				String termo = "%" + c.getNome() + "%";
@@ -254,7 +251,7 @@ public class ClienteDao implements IDAO {
 
 	// Verifica se Cliente existe
 	public boolean existCliente(Cliente cliente) {
-		String sql = "select * from Clientes where nome like ?";
+		String sql = "select * from clientes where nome like ?";
 
 		try (PreparedStatement stmt = connection.prepareStatement(sql)) {
 			String termo = "%" + cliente.getNome() + "%";
@@ -262,7 +259,7 @@ public class ClienteDao implements IDAO {
 			ResultSet rs = stmt.executeQuery();
 
 			if (!rs.next()) {
-				System.out.println("Cliente não existe");
+				System.out.println("Cliente nï¿½o existe");
 				return false;
 			} else {
 				System.out.println("Cliente existe");
@@ -272,12 +269,6 @@ public class ClienteDao implements IDAO {
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
 		}
-	}
-
-	@Override
-	public void adicionaAltera(Object object) {
-		// TODO Auto-generated method stub
-		
 	}
 
 }
