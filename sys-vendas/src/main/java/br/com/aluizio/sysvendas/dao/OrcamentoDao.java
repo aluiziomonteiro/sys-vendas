@@ -32,7 +32,7 @@ public class OrcamentoDao {
 
 	// Adicionar um Orcamento
 	public void salvaOrcamento(Orcamento orcamento) {
-		String sql = "Insert into Orcamentos (subTotalOrcamento, descontos, totalOrcamento, Custo, dataLancamento, fk_cliente, fk_usuario, totalParcelas, parcelasPagas) values (?,?,?,?,?,?,?,?,?)";
+		String sql = "Insert into orcamentos (subTotalOrcamento, descontos, totalOrcamento, Custo, dataLancamento, fk_cliente, fk_usuario, totalParcelas, parcelasPagas) values (?,?,?,?,?,?,?,?,?)";
 		try (PreparedStatement stmt = connection.prepareStatement(sql)) {
 			stmt.setBigDecimal(1, orcamento.getSubTotalOrcamento());
 
@@ -57,7 +57,7 @@ public class OrcamentoDao {
 
 	// Alterar
 	public void alterar(Orcamento orcamento) {
-		String sql = "Update Orcamentos set descontos=?," + " totalOrcamento=?, dataLancamento=?,"
+		String sql = "Update orcamentos set descontos=?," + " totalOrcamento=?, dataLancamento=?,"
 				+ " fk_cliente=?, fk_usuario=?, totalParcelas=?, parcelasPagas=? where id=?";
 
 		try (PreparedStatement stmt = connection.prepareStatement(sql)) {
@@ -82,7 +82,7 @@ public class OrcamentoDao {
 
 	// Busca maior id dos or�amentos
 	public int buscaMaiorId() {
-		String sql = "Select max(id) from Orcamentos";
+		String sql = "Select max(id) from orcamentos";
 		int id = 0;
 		try (PreparedStatement stmt = connection.prepareStatement(sql)) {
 			ResultSet rs = stmt.executeQuery();
@@ -237,7 +237,7 @@ public class OrcamentoDao {
 
 	// Atualiza
 	public void atualizaParcelas(Orcamento orcamento) {
-		String sql = "Update Orcamentos set parcelasPagas=? where id=?";
+		String sql = "Update orcamentos set parcelasPagas=? where id=?";
 
 		try (PreparedStatement stmt = connection.prepareStatement(sql)) {
 			stmt.setInt(1, orcamento.getParcelasPagas());
@@ -434,7 +434,7 @@ public class OrcamentoDao {
 			System.out.println("Cliente n�o existe");
 			return false;
 		} else {
-			String sql = "select * from Orcamentos as o inner join Clientes as c on o.fk_cliente = c.id where c.nome like ?";
+			String sql = "select * from orcamentos as o inner join Clientes as c on o.fk_cliente = c.id where c.nome like ?";
 
 			try (PreparedStatement stmt = connection.prepareStatement(sql)) {
 				String termo = "%" + cliente.getNome() + "%";

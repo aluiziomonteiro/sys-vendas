@@ -65,7 +65,7 @@ public class ProdutoDao {
 	// Verifica se Produto existe
 
 	public boolean existProduto(Produto produto) {
-		String sql = "select * from Produtos where Produtos.nome like ?";
+		String sql = "select * from produtos where produtos.nome like ?";
 
 		try (PreparedStatement stmt = connection.prepareStatement(sql)) {
 			String termo = "%" + produto.getNome() + "%";
@@ -92,11 +92,11 @@ public class ProdutoDao {
 		String sql = "";
 
 		if (produto.getId() == null) {
-			sql = "insert into Produtos (nome, descricao, indicacao, volume, "
+			sql = "insert into produtos (nome, descricao, indicacao, volume, "
 					+ " custoUnid, sugestaoVenda, fk_categoria, fk_estoque, " + " lucro, percentual, imagem)"
 					+ " values ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 		} else {
-			sql = "update Produtos set nome=?, descricao=?, indicacao=?, "
+			sql = "update produtos set nome=?, descricao=?, indicacao=?, "
 					+ " volume=?, custoUnid=?, sugestaoVenda=?, fk_categoria=?, " + " fk_estoque=?, imagem=? "
 					+ " where id=" + produto.getId();
 		}
@@ -124,7 +124,7 @@ public class ProdutoDao {
 	// Alterar Produto
 	public void alterar(Object object) {
 		Produto produto = (Produto) object;
-		String sql = "update Produtos set nome=?, descricao=?, indicacao=?, "
+		String sql = "update produtos set nome=?, descricao=?, indicacao=?, "
 				+ " volume=?, custoUnid=?, sugestaoVenda=?, fk_categoria=?, "
 				+ " fk_estoque=?, lucro=?, percentual=?, imagem=? " + " where id=?";
 
@@ -154,7 +154,7 @@ public class ProdutoDao {
 	// Remove Produto
 	public void remover(Object object) {
 		Produto produto = (Produto) object;
-		String sql = "Delete from Produtos where id=?";
+		String sql = "Delete from produtos where id=?";
 
 		try (PreparedStatement stmt = connection.prepareStatement(sql)) {
 			stmt.setInt(1, produto.getId());
@@ -170,8 +170,8 @@ public class ProdutoDao {
 	public Object buscaPorId(Object object) {
 		Produto produtoBuscado = (Produto) object;
 		Produto produto = new Produto();
-		String sql = "select * from Produtos join Estoques "
-				+ " on Estoques.id = Produtos.fk_estoque left join Fornecedores on Fornecedores.id = Produtos.fk_fornecedor where Produtos.id=?";
+		String sql = "select * from produtos join estoque "
+				+ " on estoques.id = produtos.fk_estoque left join fornecedores on fornecedores.id = produtos.fk_fornecedor where produtos.id=?";
 
 		try (PreparedStatement stmt = connection.prepareStatement(sql)) {
 			stmt.setInt(1, produtoBuscado.getId());
@@ -237,9 +237,9 @@ public class ProdutoDao {
 		Produto p = (Produto) object;
 		List<Object> produtos = new ArrayList<>();
 		if (!existProduto(p)) {
-			System.out.println("Produto n�o existe.");
+			System.out.println("Produto não existe.");
 		} else {
-			String sql = "select produtos.*, Estoques.* from produtos "
+			String sql = "select produtos.*, estoques.* from produtos "
 					+ "join estoques on produtos.fk_estoque = estoques.id " + "where produtos.nome like ?";
 
 			try (PreparedStatement stmt = connection.prepareStatement(sql)) {

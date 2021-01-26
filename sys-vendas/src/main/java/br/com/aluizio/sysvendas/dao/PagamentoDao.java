@@ -31,7 +31,7 @@ public class PagamentoDao {
 	// Inserir
 	public void inserir(List<Pagamentos> list) {
 
-		String sql = "Insert into Pagamentos (fk_orcamento,  numParcela,"
+		String sql = "Insert into pagamentos (fk_orcamento,  numParcela,"
 				+ " valorParcela, parcelaData,  status) values (?,?,?,?,?) ";
 
 		try (PreparedStatement stmt = connection.prepareStatement(sql)) {
@@ -54,7 +54,7 @@ public class PagamentoDao {
 	// Altera
 	public void alterar(Pagamentos pagamento) {
 
-		String sql = "Update Pagamentos set valorParcela=?, numParcela=?,"
+		String sql = "Update pagamentos set valorParcela=?, numParcela=?,"
 				+ " valorParcela=?, parcelaData=?, status=?, fk_orcamento=? where id=?";
 
 		try (PreparedStatement stmt = connection.prepareStatement(sql)) {
@@ -78,7 +78,7 @@ public class PagamentoDao {
 	// Busca pagamento por Orcamento
 	public List<Pagamentos> buscaPgPorOrcamento(Orcamento orcamento) {
 		List<Pagamentos> lista = new ArrayList<>();
-		String sql = "select * from Pagamentos where fk_orcamento = ?";
+		String sql = "select * from pagamentos where fk_orcamento = ?";
 
 		try (PreparedStatement stmt = connection.prepareStatement(sql)) {
 			Integer termo = orcamento.getId();
@@ -108,7 +108,7 @@ public class PagamentoDao {
 	// Paga parcelas
 	public Orcamento pagarParcela(List<Pagamentos> list) {
 
-		String sql = "Update Pagamentos set status=?" + " where id=?";
+		String sql = "Update pagamentos set status=?" + " where id=?";
 
 		try (PreparedStatement stmt = connection.prepareStatement(sql)) {
 			int idOrcamento = 0;
@@ -361,7 +361,7 @@ public class PagamentoDao {
 	// AlterarStatus
 	public void updateStatus(Pagamentos pagamento) {
 
-		String sql = "Update Pagamentos set status=? where id=?";
+		String sql = "Update pagamentos set status=? where id=?";
 
 		try (PreparedStatement stmt = connection.prepareStatement(sql)) {
 

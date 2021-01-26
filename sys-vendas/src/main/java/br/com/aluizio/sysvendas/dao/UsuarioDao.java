@@ -27,6 +27,7 @@ public class UsuarioDao {
 		Usuario usuario = (Usuario) object;
 		String sql = "delete from usuarios where id=?";
 		try (PreparedStatement stmt = connection.prepareStatement(sql)) {
+			
 			stmt.setInt(1, usuario.getId());
 			stmt.execute();
 			System.out.println("Usuário excluído.");

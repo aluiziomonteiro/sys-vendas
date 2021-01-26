@@ -19,7 +19,7 @@ public class EstoqueDao {
 	// Busca Estoque por Id
 	public Object buscaPorId(Object object) {
 		Estoque estoqueBuscado = (Estoque) object;
-		String sql = "select * from Estoques " + " where id=?";
+		String sql = "select * from estoques " + " where id=?";
 
 		try (PreparedStatement stmt = connection.prepareStatement(sql)) {
 			stmt.setInt(1, estoqueBuscado.getId());
@@ -43,9 +43,9 @@ public class EstoqueDao {
 		String sql = "";
 		Estoque estoque = (Estoque) object;
 		if (estoque.getId() == null) {
-			sql = "Insert Into Estoques (qtdEntrada, qtdMinima)" + " values (?,?)";
+			sql = "Insert Into estoques (qtdEntrada, qtdMinima)" + " values (?,?)";
 		} else {
-			sql = "Update Estoques set qtdEntrada=?, qtdMinima=?" + " where id=?";
+			sql = "Update estoques set qtdEntrada=?, qtdMinima=?" + " where id=?";
 		}
 
 		try (PreparedStatement stmt = connection.prepareStatement(sql)) {
@@ -64,7 +64,7 @@ public class EstoqueDao {
 	public void altera(Object object) {
 		String sql = "";
 		Estoque estoque = (Estoque) object;
-		sql = "Update Estoques set qtdEntrada=?, qtdMinima=?" + " where id=?";
+		sql = "Update estoques set qtdEntrada=?, qtdMinima=?" + " where id=?";
 
 		try (PreparedStatement stmt = connection.prepareStatement(sql)) {
 			stmt.setInt(1, estoque.getQtdEntrada());
@@ -81,7 +81,7 @@ public class EstoqueDao {
 
 	// Busca Maior Id
 	public int buscaMaiorId() {
-		String sql = "Select max(id) from Estoques";
+		String sql = "Select max(id) from estoques";
 		int id = 0;
 		try (PreparedStatement stmt = connection.prepareStatement(sql)) {
 			ResultSet rs = stmt.executeQuery();

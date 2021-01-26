@@ -7,7 +7,6 @@ import br.com.aluizio.sysvendas.dao.UsuarioDao;
 /**
  * TestaListaUsuario.java
  * @author Aluizio Monteiro
- * 26 de set de 2018
  */
 
 public class TestaListaUsuario {
